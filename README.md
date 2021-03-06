@@ -46,3 +46,18 @@ const getData = async (api) => await fetch(api).then( async (response) => await 
 	
 getData('http://someapi.com/apiendpoint')
 ```
+# Custom reusable function
+```javascript
+// Assuming variable to store the data is storeVariable
+let storeVariable;
+
+const getDatas = async (api, callfn) => await fetch(api).then( async (response) => await response.json()
+    .then( data => callfn(data))
+    .catch( err => console.log('rejected: ', err.message)))
+
+// Pass in the variable with callback function
+getData('http://someapi.com/apiendpoint', (data) => storeVariable = data)
+
+// See the result
+console.log(storeVariable)
+```
