@@ -39,10 +39,12 @@ getData('http://someapi.com/apiendpoint')
 // =========================================================================== //
 
 // Crazy readability
-const getData = async (api) => await fetch(api).then( async (response) => await response.json()
+const getData = async (api) => await fetch(api)
+.then( async (response) => await response.json()
 	.then(data => console.log(data))
 	.catch(err => console.warn(err.message)))
-	
+.catch(err => console.warn(err.message))
+
 getData('http://someapi.com/apiendpoint')
 
 // =========================================================================== //
@@ -54,8 +56,8 @@ let storeVariable;
 const getData = async (api, callfn) => await fetch(api)
 .then(async (response) => await response.json()
     .then(data => callfn(data))
-    .catch(err => console.warn(err.message))
-)
+    .catch(err => console.warn(err.message)))
+.catch(err => console.warn(err.message))
 
 // Pass in the variable with callback function
 getData('http://someapi.com/apiendpoint', (data) => storeVariable = data)
