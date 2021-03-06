@@ -50,7 +50,7 @@ getData('http://someapi.com/apiendpoint')
 // Assuming variable to store the data is storeVariable
 let storeVariable;
 
-const getDatas = async (api, callfn) => await fetch(api).then( async (response) => await response.json()
+const getData = async (api, callfn) => await fetch(api).then( async (response) => await response.json()
     .then( data => callfn(data))
     .catch( err => console.log('rejected: ', err.message)))
 
