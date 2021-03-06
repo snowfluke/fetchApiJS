@@ -1,5 +1,5 @@
-# fetchApiJS
-Just weird way to fetch api
+# FetchApiJs
+Just weird way to fetch api in javascript
 
 # The Net Ninja Tutorial
 ```javascript
