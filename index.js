@@ -9,8 +9,8 @@ const getData = async (api) => {
 }
 
 getData('http://someapi.com/apiendpoint')
-	.then( data => console.log('resolved: ', data))
-	.catch( err => console.log('rejected: ', err.message))
+	.then(data => console.log('resolved: ', data))
+	.catch(err => console.log('rejected: ', err.message))
 
 
 // =========================================================================== //
@@ -22,8 +22,8 @@ const getData = async (api) => {
 }
 
 getData('http://someapi.com/apiendpoint')
-	.then( data => console.log('resolved: ', data))
-	.catch( err => console.log('rejected: ', err.message))
+	.then(data => console.log('resolved: ', data))
+	.catch(err => console.log('rejected: ', err.message))
 	
 
 // =========================================================================== //
@@ -32,15 +32,16 @@ getData('http://someapi.com/apiendpoint')
 const getData = async (api) => await fetch(api).then( async (response) => await response.json())
 
 getData('http://someapi.com/apiendpoint')
-	.then( data => console.log('resolved: ', data))
-	.catch( err => console.log('rejected: ', err.message))
+	.then(data => console.log(data))
+	.catch(err => console.warn(err.message))
 
 
 // =========================================================================== //
+
 // Crazy readability
 const getData = async (api) => await fetch(api).then( async (response) => await response.json()
-	.then( data => console.log('resolved: ', data))
-	.catch( err => console.log('rejected: ', err.message)))
+	.then(data => console.log(data))
+	.catch(err => console.warn(err.message)))
 	
 getData('http://someapi.com/apiendpoint')
 
@@ -50,9 +51,11 @@ getData('http://someapi.com/apiendpoint')
 // Assuming variable to store the data is storeVariable
 let storeVariable;
 
-const getData = async (api, callfn) => await fetch(api).then( async (response) => await response.json()
-    .then( data => callfn(data))
-    .catch( err => console.log('rejected: ', err.message)))
+const getData = async (api, callfn) => await fetch(api)
+.then(async (response) => await response.json()
+    .then(data => callfn(data))
+    .catch(err => console.warn(err.message))
+)
 
 // Pass in the variable with callback function
 getData('http://someapi.com/apiendpoint', (data) => storeVariable = data)
